@@ -15,8 +15,8 @@ class DemoLaravel12Ideas extends Controller
         Gate::authorize('viewAny', User::class);
 
         // fillable vs. guarded
-        $user->create($request->safe());
-        $user->forceFill($request->safe()->all())->create();
+        $request->user()->create($request->safe());
+        $request->user()->forceFill($request->safe()->all())->create();
 
         // return 200;
         return HttpStatus::ok;
